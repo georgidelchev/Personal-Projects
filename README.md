@@ -1,2 +1,2 @@
 # otherTasksByMe
-Here you can find some taska made by me!
+Here you can find some tasks made by me!
