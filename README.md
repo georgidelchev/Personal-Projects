@@ -1,4 +1,4 @@
-# Other tasks made by me !
+# Some tasks made up by me :) !
 
 Here you can find some tasks made by me!
 
