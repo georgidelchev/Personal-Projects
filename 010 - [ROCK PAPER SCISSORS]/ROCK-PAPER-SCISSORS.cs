@@ -117,7 +117,7 @@ namespace ConsoleApp4
             }
             Thread.Sleep(1000);
             Console.Clear();
-            
+
             string[] arr = { "S", "T", "A", "T", "I", "S", "T", "I", "C", "S", };
             foreach (string letters in arr)
             {
@@ -125,7 +125,7 @@ namespace ConsoleApp4
                 Thread.Sleep(500);
             }
             Console.Clear();
-            
+
             Console.WriteLine();
             Console.WriteLine("       Statistics: ");
             Console.WriteLine();
@@ -133,24 +133,24 @@ namespace ConsoleApp4
             Console.ForegroundColor = ConsoleColor.Black;
 
             Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Player wins: [{playerWins}] - {(playerWins * 1.00 / gamesToPlay * 1.00) * 100:f2}%");
+            Console.WriteLine($"Player wins: [{playerWins}] - {(playerWins * 1.00 / gamesToPlay * 1.00) * 100:f2}%.");
 
             Console.BackgroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Computer wins: [{computerWins}] - {(computerWins * 1.00 / gamesToPlay * 1.00) * 100:f2}%");
+            Console.WriteLine($"Computer wins: [{computerWins}] - {(computerWins * 1.00 / gamesToPlay * 1.00) * 100:f2}%.");
 
             Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Draw games: [{draw}] - {(draw * 1.00 / gamesToPlay * 1.00) * 100:f2}%");
+            Console.WriteLine($"Draw games: [{draw}] - {(draw * 1.00 / gamesToPlay * 1.00) * 100:f2}%.");
 
             Console.ResetColor();
 
 
-            if (playerWins > computerWins)
+            if (playerWins > computerWins && playerWins > draw)
             {
                 Console.WriteLine();
                 Console.WriteLine($"Congrats you won my tournament.{Environment.NewLine}" +
                     $"Your reward is a cup of grape juice.");
             }
-            else if (computerWins > playerWins)
+            else if (computerWins > playerWins && computerWins > draw)
             {
                 Console.WriteLine();
                 Console.WriteLine($"Well... dont worry. This time you may losed , " +
