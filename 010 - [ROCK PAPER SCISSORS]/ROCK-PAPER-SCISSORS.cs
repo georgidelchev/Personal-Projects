@@ -13,6 +13,11 @@ namespace ConsoleApp4
 
             Console.Write("Games count: ");
             int gamesToPlay = int.Parse(Console.ReadLine());
+            while (gamesToPlay < 1)
+            {
+                Console.WriteLine("Please play at least one game. :)");
+                gamesToPlay = int.Parse(Console.ReadLine());
+            }
             Console.Clear();
 
             Console.WriteLine("Please choose:");
@@ -110,8 +115,21 @@ namespace ConsoleApp4
                 i++;
                 Thread.Sleep(500);
             }
+            Thread.Sleep(1000);
             Console.Clear();
-
+            
+            string[] arr = { "S", "T", "A", "T", "I", "S", "T", "I", "C", "S", };
+            foreach (string letters in arr)
+            {
+                Console.Write($"{letters} ");
+                Thread.Sleep(500);
+            }
+            Console.Clear();
+            
+            Console.WriteLine();
+            Console.WriteLine("       Statistics: ");
+            Console.WriteLine();
+            Console.WriteLine($"Total games played: [{gamesToPlay}]");
             Console.ForegroundColor = ConsoleColor.Black;
 
             Console.BackgroundColor = ConsoleColor.Green;
