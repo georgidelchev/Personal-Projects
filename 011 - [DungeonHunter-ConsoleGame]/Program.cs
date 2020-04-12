@@ -276,9 +276,14 @@ namespace rpg
                         // and he is not a winner 
                         while (!isWinner && isAlive)
                         {
-                                                                                    // current armors
-                            Console.WriteLine($"Sword: {currentSword} | Helmet: {currentHelmet} | Chestplate: {currentChestplate} | Pants: {currentPants} | Boots: {currentBoots}");
-                            Console.WriteLine();
+                                                  // current armors
+                            Console.WriteLine($"Sword: [{currentSword}] | " +
+                                              $"Helmet: [{currentHelmet}] | " +
+                                              $"Chestplate: [{currentChestplate}] | " +
+                                              $"Pants: [{currentPants}] | " +
+                                              $"Boots: [{currentBoots}]");
+                            
+                            Console.WriteLine();                            
                                         // operation choose                                            // current stats
                             Console.WriteLine($"╔════════════════════════════════╗           ║Current Health: [{playerHealth}]      ");
                             Console.WriteLine($"║  #=# Choose an operation: #=#  ║           ║Current Deffence: [{playerDefence}]   ");
