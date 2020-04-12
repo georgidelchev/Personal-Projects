@@ -7,37 +7,37 @@ namespace rpg
     {
         static void Main(string[] args)
         {
-            //string[] hello = {
-            //    "H","e","l","l","o",
-            //    " ",
-            //    "t","r","a","v","e","l","l","e","r",
-            //    "!"};
-            //
-            //for (int i = 0; i < hello.Length; i++)
-            //{
-            //    Console.Write($"{hello[i]}");
-            //    Thread.Sleep(200);
-            //}
-            //Thread.Sleep(300);
-            //Console.Clear();
-            //
-            //Console.WriteLine("         Hello traveller!");
-            //Console.WriteLine("        [Maze Runner v1.0]");
-            //Console.WriteLine($"{ Environment.NewLine}" +
-            //    $"Im Steve , nice to meet you, son :) ! " +
-            //    $"{Environment.NewLine}Welcome to the Maze Runner - " +
-            //    $"[{System.Environment.MachineName}]");
-            //
-            //Thread.Sleep(7000);
-            //Console.Clear();
-            //
-            //Console.WriteLine($"Lets talk 'bout myself sir! " +
-            //    $"{Environment.NewLine}...and your mission of course! ");
+            string[] hello = {
+                "H","e","l","l","o",
+                " ",
+                "t","r","a","v","e","l","l","e","r",
+                "!"};
 
+            for (int i = 0; i < hello.Length; i++)
+            {
+                Console.Write($"{hello[i]}");
+                Thread.Sleep(200);
+            }
+            Thread.Sleep(300);
+            Console.Clear();
 
-            // 
-            // info implementation:
-            //
+            Console.WriteLine("         Hello traveller!");
+            Console.WriteLine("        [Maze Runner v1.0]");
+            Console.WriteLine($"{ Environment.NewLine}" +
+                $"Im Steve , nice to meet you, son :) ! " +
+                $"{Environment.NewLine}Welcome to the Maze Runner - " +
+                $"[{System.Environment.MachineName}]");
+
+            Thread.Sleep(7000);
+            Console.Clear();
+
+            Console.WriteLine($"Lets talk 'bout myself sir! " +
+                $"{Environment.NewLine}...and your mission of course! ");
+            // TODO  INFO AND STORY ADD!!!!
+            // TODO  INFO AND STORY ADD!!!!
+            // TODO  INFO AND STORY ADD!!!!
+
+            // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  MAKE GAME WINNABLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             Console.WriteLine();
             Console.Write("Press any key to continue: ");
@@ -161,12 +161,12 @@ namespace rpg
                                     }
                                 }
 
-                                
+
                                 if (dmgReducer == true)
                                 {
                                     playerHealth = playerHealth + (playerHealth * 0.20);
                                 }
-                                dmgReducer = false;                                
+                                dmgReducer = false;
                             }
 
 
@@ -308,7 +308,7 @@ namespace rpg
                                         $"C'mon i believe in you boy!");
                                     Console.SetCursorPosition(0, Console.CursorTop - 1);
                                     Thread.Sleep(2000);
-                                    Console.Write(new string(' ', Console.BufferWidth));                                   
+                                    Console.Write(new string(' ', Console.BufferWidth));
                                     Console.SetCursorPosition(0, Console.CursorTop);
 
                                 }
@@ -394,17 +394,41 @@ namespace rpg
                         }
                         Thread.Sleep(2000);
                         break;
+                    case 10:
+                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
+                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
+                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
+                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
+                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
                         break;
                 }
             }
 
-            Console.WriteLine(playerHealth);
-            Console.WriteLine(playerAttack);
-            Console.WriteLine(playerCoins);
+            string[] gameOver = { "G", "A", "M", "E", " ", "O", "V", "E", "R", "!" };
+            for (int i = 0; i < gameOver.Length; i++)
+            {
+                Console.Write($"{gameOver[i]}");
+                Thread.Sleep(200);
+            }
+            Console.Clear();
+            Console.WriteLine("GAME OVER!");
+            Console.WriteLine($"Health Diff: {playerHealth}");
+            Console.WriteLine($"Total attack damage: {playerAttack}");
+            Console.WriteLine($"Total coins earned: {playerCoins}");
+            // TODO  add more statistics!!! - total wins
+            // TODO  add more statistics!!! - damage dealt
+            // TODO  add more statistics!!! - damage took
+            // TODO  add more statistics!!! - purchases when i implemate shop
+            // TODO  add more statistics!!! - OTHERS...
 
-            // customizing:
-            // other implementations:
-            //
+
+
+            // TODO  customizing:
+            // TODO  other implementations:
+
+
+
+            // TODO  MORE THINGS...
         }
     }
 }
