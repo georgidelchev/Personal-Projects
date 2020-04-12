@@ -8,7 +8,7 @@ namespace rpg
         static void Main(string[] args)
         {
             // >>> IF YOU FOUND A BUG , SEND ME A MESSAGE PLEASE!!! <<<
-            
+
             //// string[] hello = {
             ////     "H","e","l","l","o",
             ////     " ",
@@ -49,19 +49,20 @@ namespace rpg
             //// Console.Clear();
 
             // Player statistics:
-            double playerHealth = 10;       
-            double playerExp = 0;           
-            double playerLevel = 1;         
-            double playerAttack = 25;       
-            double playerCoins = 30;        
-            double playerDefence = 0;       
+            double playerHealth = 100;
+            double playerExp = 0;
+            double playerLevel = 1;
+            double playerAttack = 25;
+            double playerCoins = 30;
+            double playerDefence = 0;
 
             // Current equipment as names:
-            string currentHelmet = string.Empty;         
-            string currentChestplate = string.Empty;     
-            string currentPants = string.Empty;          
-            string currentBoots = string.Empty;          
-            string currentSword = string.Empty;          
+            string currentHelmet = string.Empty;
+            string currentChestplate = string.Empty;
+            string currentPants = string.Empty;
+            string currentBoots = string.Empty;
+            string currentSword = string.Empty;
+
 
             // Which monsters are beaten:
             bool isLittleDarkSpiderBeaten = false;
@@ -74,20 +75,149 @@ namespace rpg
             bool isAlive = true;
             bool dmgReducer = false;
             bool reviveCard = false;
-            
+
             // Rooms and Wins Count:
             int roomsCount = 0;
             int winsCount = 0;
 
             // while player is alive loop is true:
-            while (isAlive) 
+            while (isAlive)
             {
                 // Increasing of rooms count:
                 roomsCount++;
+                if (roomsCount % 3 == 0)
+                {
+                    Console.WriteLine("Do you want to shop?");
+                    Console.WriteLine("[0] YES");
+                    Console.WriteLine("[1] NO");
+                    int shoping = int.Parse(Console.ReadLine());
+                    switch (shoping)
+                    {
+                        case 0:
+                            string[] obsidianArmors = { "Obsidian helmet", "Obsidian chestplate",
+                                                    "Obsidian pants", "Obsidian boots" };
+
+                            string[] ironArmors ={"Iron helmet","Iron chestplate",
+                                              "Iron pants","Iron boots" };
+
+                            string[] bronzeArmors = { "Bronze helmet", "Bronze chestplate",
+                                                  "Bronze pants", "Bronze boots", };
+
+                            string[] swords = { "Wood sword", "Iron sword", "Obsidian sword" };
+
+                            // Console.WriteLine("     WELCOME TO THE SHOP ROOM!");
+                            // Console.WriteLine($"     We have a couple of items." +
+                            //     $"{Environment.NewLine}            Lets see!");
+                            // Thread.Sleep(3000);
+
+                            Console.WriteLine("[0] to see the swords!");
+                            Console.WriteLine("[1] to see the armors!");
+                            Console.WriteLine("[2] to EXIT!");
+                            int shopChoice = int.Parse(Console.ReadLine());
+                            if (shopChoice == 0)
+                            {
+                                Console.WriteLine("What you want to buy?");
+
+                                Console.WriteLine($"╔════════════════════════════════╗");
+                                Console.WriteLine($"║       #=# SWORDS MENU #=#      ║");
+                                Console.WriteLine($"║════════════════════════════════║");
+                                Console.WriteLine($"║[0] - {swords[0]} - [50G]        ║");
+                                Console.WriteLine($"║      [+10 dmg][+1 deff]        ║");
+                                Console.WriteLine($"║════════════════════════════════║");
+                                Console.WriteLine($"║[1] - {swords[1]} - [100G]       ║");
+                                Console.WriteLine($"║      [+15 dmg][+3 deff]        ║");
+                                Console.WriteLine($"║════════════════════════════════║");
+                                Console.WriteLine($"║[2] - {swords[2]} - [200G]   ║");
+                                Console.WriteLine($"║      [+20 dmg][+5 deff]        ║");
+                                Console.WriteLine($"╚════════════════════════════════╝");
+
+                                int order = int.Parse(Console.ReadLine());
+                                if (order == 0)
+                                {
+                                    if (playerCoins >= 50)
+                                    {
+                                        playerCoins -= 50;
+                                        Console.WriteLine($"You bought an Wooden Sword! " +
+                                        $"{Environment.NewLine}Attack increased with: +10 Attack Damage! " +
+                                        $"{Environment.NewLine}Deff increased with: +1");
+                                        playerAttack += 10;
+                                        playerDefence += 1;
+                                        currentSword = "Wooden Sword";
+                                    }
+                                    else
+                                    {
+                                        double neededCoins = Math.Abs(playerCoins - 50);
+                                        Console.WriteLine($"Not enough money!" +
+                                        $"{Environment.NewLine}You need {neededCoins} coins more!");
+                                    }
+                                }
+                                else if (order == 1)
+                                {
+                                    if (playerCoins >= 100)
+                                    {
+                                        playerCoins -= 100;
+                                        Console.WriteLine($"You bought an Iron Sword! " +
+                                        $"{Environment.NewLine}Attack increased with: +15 Attack Damage! " +
+                                        $"{Environment.NewLine}Deff increased with: +3");
+                                        playerAttack += 15;
+                                        playerDefence += 3;
+                                        currentSword = "Iron Sword";
+                                    }
+                                    else
+                                    {
+                                        double neededCoins = Math.Abs(playerCoins - 100);
+                                        Console.WriteLine($"Not enough money!" +
+                                        $"{Environment.NewLine}You need {neededCoins} coins more!");
+                                    }
+
+                                }
+                                else if (order == 2)
+                                {
+                                    if (playerCoins >= 200)
+                                    {
+                                        playerCoins -= 200;
+                                        Console.WriteLine($"You bought an Obsidian Sword! " +
+                                        $"{Environment.NewLine}Attack increased with: +20 Attack Damage! " +
+                                        $"{Environment.NewLine}Deff increased with: +5");
+                                        playerAttack += 20;
+                                        playerDefence += 5;
+                                        currentSword = "Obsidian Sword";
+                                    }
+                                    else
+                                    {
+                                        double neededCoins = Math.Abs(playerCoins - 200);
+                                        Console.WriteLine($"Not enough money!" +
+                                        $"{Environment.NewLine}You need {neededCoins} coins more!");
+                                    }
+                                }
+
+                            }
+                            else if (shopChoice == 1)
+                            {
+                                Console.WriteLine($"╔════════════════════════════════╗");
+                                Console.WriteLine($"║       #=# ARMORS MENU #=#      ║");
+                                Console.WriteLine($"║════════════════════════════════║");
+                                Console.WriteLine($"║[0] - Bronze Armor - [150G]     ║");
+                                Console.WriteLine($"║      [+10 deff]                ║");
+                                Console.WriteLine($"║════════════════════════════════║");
+                                Console.WriteLine($"║[1] - Iron Armor - [250G]       ║");
+                                Console.WriteLine($"║      [+18 deff]                ║");
+                                Console.WriteLine($"║════════════════════════════════║");
+                                Console.WriteLine($"║[2] - Obsidian Armor - [550G]   ║");
+                                Console.WriteLine($"║      [+35 deff]                ║");
+                                Console.WriteLine($"╚════════════════════════════════╝");
+                            }
+                            else if (shopChoice == 2)
+                            {
+                                break;
+                            }
+                            break;
+                    }
+                }
 
                 Console.WriteLine($"#=# Room: {roomsCount} #=#"); // message which room is it
                 int typeOfTheRoom = new Random().Next(1, 10); // picking random room
-                
+
                 // switching rooms:
                 switch (typeOfTheRoom)
                 {
@@ -130,7 +260,7 @@ namespace rpg
                                 break;
                         }
 
-                          // message what monster you met
+                        // message what monster you met
                         Console.WriteLine($"You've met a " +
                             $"[{monsterName}] " +
                             $"with [{monsterAttack}] attack damage " +
@@ -146,22 +276,22 @@ namespace rpg
                         // and he is not a winner 
                         while (!isWinner && isAlive)
                         {
-                            // current armors
-                            Console.WriteLine($"Helmet: {currentHelmet} | Chestplate: {currentChestplate} | Pants: {currentPants} | Boots: {currentBoots}");
-                            
-                                            // operation choose                                       // current stats
-                            Console.WriteLine($"╔════════════════════════════════╗           ║Current Damage:[{playerAttack}] ");
-                            Console.WriteLine($"║  #=# Choose an operation: #=#  ║           ║Current Health:[{playerHealth}] ");
-                            Console.WriteLine($"║════════════════════════════════║           ║Current Coins:[{playerCoins}]   ");
-                            Console.WriteLine($"║  [0]-Fight with the monster.   ║           ║                                ");
-                            Console.WriteLine($"║  [1]-Run Away from the monster.║           ║Monster Name:[{monsterName}]    ");
-                            Console.WriteLine($"║  [2]-Hide somewhere.           ║           ║Monster HP:[{monsterHealth}]    ");
-                            Console.WriteLine($"╚════════════════════════════════╝           ║Monster Attack:[{monsterAttack}]");
-                            
-                                         // choosing the operation
+                                                                                    // current armors
+                            Console.WriteLine($"Sword: {currentSword} | Helmet: {currentHelmet} | Chestplate: {currentChestplate} | Pants: {currentPants} | Boots: {currentBoots}");
+                            Console.WriteLine();
+                                        // operation choose                                            // current stats
+                            Console.WriteLine($"╔════════════════════════════════╗           ║Current Health: [{playerHealth}]      ");
+                            Console.WriteLine($"║  #=# Choose an operation: #=#  ║           ║Current Deffence: [{playerDefence}]   ");
+                            Console.WriteLine($"║════════════════════════════════║           ║Current Damage: [{playerAttack}]      ");
+                            Console.WriteLine($"║  [0]-Fight with the monster.   ║           ║Current Coins: [{playerCoins}]        ");
+                            Console.WriteLine($"║  [1]-Run Away from the monster.║           ║Monster Name :[{monsterName}]         ");
+                            Console.WriteLine($"║  [2]-Hide somewhere.           ║           ║Monster HP: [{monsterHealth}]         ");
+                            Console.WriteLine($"╚════════════════════════════════╝           ║Monster Attack: [{monsterAttack}]     ");
+
+                            // choosing the operation
                             int operationType = int.Parse(Console.ReadLine());
 
-                              //re-typing the operation if its invalid
+                            //re-typing the operation if its invalid
                             while (operationType < 0 || operationType > 2)
                             {
                                 Console.Clear();
@@ -175,8 +305,8 @@ namespace rpg
                                 Console.WriteLine("╚════════════════════════════════╝");
                                 operationType = int.Parse(Console.ReadLine());
                             }
-                                // fighting
-                            if (operationType == 0) 
+                            // fighting
+                            if (operationType == 0)
                             {
                                 while (isAlive && !isWinner)
                                 {
@@ -184,7 +314,12 @@ namespace rpg
                                     if (criticalStrike == 1) // he have critical strike
                                     {
                                         monsterHealth -= playerAttack * 3; // CRITICAL STRIKE (triple damage)
-                                        playerHealth -= monsterAttack;   // player took a damage from the monster
+                                        playerHealth -= monsterAttack - playerDefence;   // player took a damage from the monster
+                                        playerDefence -= monsterAttack; // decrease the armor
+                                        if (playerDefence < 0)
+                                        {
+                                            playerDefence = 0;
+                                        }
                                     }
                                     else if (criticalStrike == 2) // he dont have critical strike
                                     {
@@ -532,47 +667,12 @@ namespace rpg
                         }
                         Thread.Sleep(2000);
                         break;
-                    case 10:
-                        string[] obsidianArmors = { "Obsidian helmet", "Obsidian chestplate",
-                                                    "Obsidian pants", "Obsidian boots" };
 
-                        string[] ironArmors ={"Iron helmet","Iron chestplate",
-                                              "Iron pants","Iron boots" };
 
-                        string[] bronzeArmors = { "Bronze helmet", "Bronze chestplate",
-                                                  "Bronze pants", "Bronze boots", };
 
-                        string[] swords = {"Wood sword","Rock sword","Iron sword",
-                                           "Bronze sword","Diamond sword","Obsidian sword" };
 
-                        Console.WriteLine("     WELCOME TO THE SHOP ROOM!");
-                        Console.WriteLine($"     We have a couple of items." +
-                            $"{Environment.NewLine}            Lets see!");
-                        Thread.Sleep(3000);
 
-                        Console.WriteLine("╔════════════════════════════════╗");
-                        Console.WriteLine("║       #=# SHOP MENU #=#        ║");
-                        Console.WriteLine("║════════════════════════════════║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║════════════════════════════════║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║════════════════════════════════║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║════════════════════════════════║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║════════════════════════════════║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("║                                ║");
-                        Console.WriteLine("╚════════════════════════════════╝");
+
 
                         break;
                 }
@@ -584,7 +684,7 @@ namespace rpg
                 Console.Write($"{gameOver[i]}");
                 Thread.Sleep(200);
             }
-            
+
             Console.Clear();
             Console.WriteLine("GAME OVER!");
             Console.WriteLine($"Health Diff: {Math.Abs(playerHealth)}");
