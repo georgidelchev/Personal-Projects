@@ -7,6 +7,8 @@ namespace rpg
     {
         static void Main(string[] args)
         {
+            // >>> IF YOU FOUND A BUG , SEND ME A MESSAGE PLEASE!!! <<<
+            
             //// string[] hello = {
             ////     "H","e","l","l","o",
             ////     " ",
@@ -46,39 +48,47 @@ namespace rpg
             //// Console.ReadKey();
             //// Console.Clear();
 
-            double playerHealth = 10;       //
-            double playerExp = 0;           //
-            double playerLevel = 1;         // Player statistics
-            double playerAttack = 25;       // hp,dmg,coins,lvl etc...
-            double playerCoins = 30;        //
-            double playerDefence = 0;       //
+            // Player statistics:
+            double playerHealth = 10;       
+            double playerExp = 0;           
+            double playerLevel = 1;         
+            double playerAttack = 25;       
+            double playerCoins = 30;        
+            double playerDefence = 0;       
 
-            string currentHelmet = string.Empty;
-            string currentChestplate = string.Empty;
-            string currentPants = string.Empty;
-            string currentBoots = string.Empty;
-            string currentSword = string.Empty;
+            // Current equipment as names:
+            string currentHelmet = string.Empty;         
+            string currentChestplate = string.Empty;     
+            string currentPants = string.Empty;          
+            string currentBoots = string.Empty;          
+            string currentSword = string.Empty;          
 
+            // Which monsters are beaten:
             bool isLittleDarkSpiderBeaten = false;
             bool isDarkSpiderBeaten = false;
             bool isGiantBeaten = false;
             bool isDarkWarlockBeaten = false;
             bool isBigGoblinBeaten = false;
 
+            // Reward cards:
             bool isAlive = true;
             bool dmgReducer = false;
             bool reviveCard = false;
+            
+            // Rooms and Wins Count:
             int roomsCount = 0;
             int winsCount = 0;
 
-            // while player is alive 
-            // loop is true
+            // while player is alive loop is true:
             while (isAlive) 
             {
+                // Increasing of rooms count:
                 roomsCount++;
 
-                Console.WriteLine($"#=# Room: {roomsCount} #=#");
+                Console.WriteLine($"#=# Room: {roomsCount} #=#"); // message which room is it
                 int typeOfTheRoom = new Random().Next(1, 10); // picking random room
+                
+                // switching rooms:
                 switch (typeOfTheRoom)
                 {
                     case 1:  //
