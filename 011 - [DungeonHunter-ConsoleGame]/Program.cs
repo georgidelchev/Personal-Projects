@@ -7,54 +7,73 @@ namespace rpg
     {
         static void Main(string[] args)
         {
-            string[] hello = {
-                "H","e","l","l","o",
-                " ",
-                "t","r","a","v","e","l","l","e","r",
-                "!"};
+            //// string[] hello = {
+            ////     "H","e","l","l","o",
+            ////     " ",
+            ////     "t","r","a","v","e","l","l","e","r",
+            ////     "!"};
+            ////
+            //// for (int i = 0; i < hello.Length; i++)
+            //// {
+            ////     Console.Write($"{hello[i]}");
+            ////     Thread.Sleep(200);
+            //// }
+            //// Thread.Sleep(300);
+            //// Console.Clear();
+            ////
+            //// Console.WriteLine("         Hello traveller!");
+            //// Console.WriteLine("        [Maze Runner v1.0]");
+            //// Console.WriteLine($"{ Environment.NewLine}" +
+            ////     $"Im Steve , nice to meet you, son :) ! " +
+            ////     $"{Environment.NewLine}Welcome to the Maze Runner - " +
+            ////     $"[{System.Environment.MachineName}]");
+            ////
+            //// Thread.Sleep(7000);
+            //// Console.Clear();
+            ////
+            //// Console.WriteLine($"Lets talk 'bout myself sir! " +
+            ////     $"{Environment.NewLine}...and your mission of course! ");
+            //// Console.WriteLine("STORY: ");
+            ////
+            //// // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  MAKE GAME WINNABLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //// // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  FIX THE TEXTS   !! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ////
+            //// // TODO ADD ARMORS AND SOME DEFENSIVE ITEMS !!!
+            //// // TODO ADD ARMORS AND SOME DEFENSIVE ITEMS !!!
+            ////
+            //// Console.WriteLine();
+            //// Console.Write("Press any key to continue: ");
+            //// Console.ReadKey();
+            //// Console.Clear();
 
-            for (int i = 0; i < hello.Length; i++)
-            {
-                Console.Write($"{hello[i]}");
-                Thread.Sleep(200);
-            }
-            Thread.Sleep(300);
-            Console.Clear();
-
-            Console.WriteLine("         Hello traveller!");
-            Console.WriteLine("        [Maze Runner v1.0]");
-            Console.WriteLine($"{ Environment.NewLine}" +
-                $"Im Steve , nice to meet you, son :) ! " +
-                $"{Environment.NewLine}Welcome to the Maze Runner - " +
-                $"[{System.Environment.MachineName}]");
-
-            Thread.Sleep(7000);
-            Console.Clear();
-
-            Console.WriteLine($"Lets talk 'bout myself sir! " +
-                $"{Environment.NewLine}...and your mission of course! ");
-            // TODO  INFO AND STORY ADD!!!!
-            // TODO  INFO AND STORY ADD!!!!
-            // TODO  INFO AND STORY ADD!!!!
-
-            // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  MAKE GAME WINNABLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-            Console.WriteLine();
-            Console.Write("Press any key to continue: ");
-            Console.ReadKey();
-            Console.Clear();
-
-            double playerHealth = 100;      //
+            double playerHealth = 10;       //
             double playerExp = 0;           //
-            double playerLevel = 1;         // stats of the player
-            double playerAttack = 15;       //
-            double playerCoins = 15;        //
+            double playerLevel = 1;         // Player statistics
+            double playerAttack = 25;       // hp,dmg,coins,lvl etc...
+            double playerCoins = 30;        //
+            double playerDefence = 0;       //
+
+            string currentHelmet = string.Empty;
+            string currentChestplate = string.Empty;
+            string currentPants = string.Empty;
+            string currentBoots = string.Empty;
+            string currentSword = string.Empty;
+
+            bool isLittleDarkSpiderBeaten = false;
+            bool isDarkSpiderBeaten = false;
+            bool isGiantBeaten = false;
+            bool isDarkWarlockBeaten = false;
+            bool isBigGoblinBeaten = false;
 
             bool isAlive = true;
             bool dmgReducer = false;
+            bool reviveCard = false;
             int roomsCount = 0;
+            int winsCount = 0;
 
-            while (isAlive) // while player is alive
+            // while player is alive 
+            // loop is true
+            while (isAlive) 
             {
                 roomsCount++;
 
@@ -76,100 +95,162 @@ namespace rpg
                         {
                             case 1:
                                 monsterName = "Little Dark Spider";
-                                monsterAttack = 2;
-                                monsterHealth = 50;
+                                monsterAttack = 6;
+                                monsterHealth = 30;
                                 break;
                             case 2:
                                 monsterName = "Dark Spider";
-                                monsterAttack = 5;
+                                monsterAttack = 10;
                                 monsterHealth = 60;
                                 break;
                             case 3:
                                 monsterName = "Giant";
-                                monsterAttack = 10;
-                                monsterHealth = 65;
+                                monsterAttack = 13;
+                                monsterHealth = 80;
                                 break;
                             case 4:
                                 monsterName = "Dark Warlock";
-                                monsterAttack = 12;
-                                monsterHealth = 50;
+                                monsterAttack = 15;
+                                monsterHealth = 95;
                                 break;
                             case 5:
                                 monsterName = "Big Goblin [BOSS]";
-                                monsterAttack = 18;
-                                monsterHealth = 100;
+                                monsterAttack = 20;
+                                monsterHealth = 115;
                                 break;
                         }
 
+                          // message what monster you met
                         Console.WriteLine($"You've met a " +
                             $"[{monsterName}] " +
                             $"with [{monsterAttack}] attack damage " +
                             $"and [{monsterHealth}] health.");
 
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Thread.Sleep(4500);
+                        Console.Write(new string(' ', Console.BufferWidth));
+                        Console.SetCursorPosition(0, Console.CursorTop);
+                        Console.WriteLine();
+
+                        // while player is alive 
+                        // and he is not a winner 
                         while (!isWinner && isAlive)
                         {
-                            Console.WriteLine($"╔════════════════════════════════╗                                        ");
-                            Console.WriteLine($"║  #=# Choose an operation: #=#  ║           Current Health:[{playerHealth}]      ");
-                            Console.WriteLine($"║════════════════════════════════║           Current Damage:[{playerAttack}]      ");
-                            Console.WriteLine($"║  [0]-Fight with the monster.   ║                                        ");
-                            Console.WriteLine($"║  [1]-Run Away from the monster.║           Monster HP:[{monsterHealth}] ");
-                            Console.WriteLine($"║  [2]-Hide somewhere.           ║           Monster Attack:[{monsterAttack}]                             ");
-                            Console.WriteLine("╚════════════════════════════════╝                                         ");
+                            // current armors
+                            Console.WriteLine($"Helmet: {currentHelmet} | Chestplate: {currentChestplate} | Pants: {currentPants} | Boots: {currentBoots}");
+                            
+                                            // operation choose                                       // current stats
+                            Console.WriteLine($"╔════════════════════════════════╗           ║Current Damage:[{playerAttack}] ");
+                            Console.WriteLine($"║  #=# Choose an operation: #=#  ║           ║Current Health:[{playerHealth}] ");
+                            Console.WriteLine($"║════════════════════════════════║           ║Current Coins:[{playerCoins}]   ");
+                            Console.WriteLine($"║  [0]-Fight with the monster.   ║           ║                                ");
+                            Console.WriteLine($"║  [1]-Run Away from the monster.║           ║Monster Name:[{monsterName}]    ");
+                            Console.WriteLine($"║  [2]-Hide somewhere.           ║           ║Monster HP:[{monsterHealth}]    ");
+                            Console.WriteLine($"╚════════════════════════════════╝           ║Monster Attack:[{monsterAttack}]");
+                            
+                                         // choosing the operation
                             int operationType = int.Parse(Console.ReadLine());
 
+                              //re-typing the operation if its invalid
                             while (operationType < 0 || operationType > 2)
                             {
                                 Console.Clear();
                                 Console.WriteLine("Please enter a valid action:");
                                 Console.WriteLine("╔════════════════════════════════╗");     //
                                 Console.WriteLine("║  #=# Choose an operation: #=#  ║");     //
-                                Console.WriteLine("║════════════════════════════════║");     //
+                                Console.WriteLine("║════════════════════════════════║");     //   Player
                                 Console.WriteLine("║  [0]-Fight with the monster.   ║");     // Operations:
                                 Console.WriteLine("║  [1]-Run Away from the monster.║");     //
                                 Console.WriteLine("║  [2]-Hide somewhere.           ║");     //
                                 Console.WriteLine("╚════════════════════════════════╝");
                                 operationType = int.Parse(Console.ReadLine());
                             }
-
-                            if (operationType == 0) // fighting
+                                // fighting
+                            if (operationType == 0) 
                             {
                                 while (isAlive && !isWinner)
                                 {
-                                    monsterHealth -= playerAttack;   // hit per hit between
-                                    playerHealth -= monsterAttack;   // player and the monster
+                                    int criticalStrike = new Random().Next(1, 2);
+                                    if (criticalStrike == 1) // he have critical strike
+                                    {
+                                        monsterHealth -= playerAttack * 3; // CRITICAL STRIKE (triple damage)
+                                        playerHealth -= monsterAttack;   // player took a damage from the monster
+                                    }
+                                    else if (criticalStrike == 2) // he dont have critical strike
+                                    {
+                                        monsterHealth -= playerAttack;   // hit per hit between
+                                        playerHealth -= monsterAttack;   // player took a damage from the monster
+                                    }
+
                                     if (monsterHealth <= 0)
                                     {
                                         Console.WriteLine("You killed that monster!");
-                                        playerExp += 2;
+                                        playerExp += 5;
                                         if (playerExp >= 100) // lvl up
                                         {
-                                            playerLevel++;
-                                            playerAttack += 5;
-                                            playerHealth += 10;
-                                            playerExp -= 100;
+                                            playerLevel++;           //
+                                            playerAttack += 5;       // some stats added to the 
+                                            playerHealth += 10;      // player when he level up !
+                                            playerExp -= 100;        //
                                         }
+
                                         isWinner = true;
-                                        break;
+                                        if (monsterName == "Little Dark Spider")
+                                        {
+                                            isLittleDarkSpiderBeaten = true;
+                                        }
+                                        else if (monsterName == "Dark Spider")
+                                        {
+                                            isDarkSpiderBeaten = true;
+                                        }
+                                        else if (monsterName == "Giant")
+                                        {
+                                            isGiantBeaten = true;
+                                        }
+                                        else if (monsterName == "Dark Warlock")
+                                        {
+                                            isDarkWarlockBeaten = true;
+                                        }
+                                        else if (monsterName == "Big Goblin [BOSS]")
+                                        {
+                                            isBigGoblinBeaten = true;
+                                        }
+
+                                        if (isWinner)
+                                        {
+                                            winsCount++;
+                                        }
+                                    }
+
+                                    if (dmgReducer == true) // card of reducing damage
+                                    {
+                                        playerHealth = playerHealth + (playerHealth * 0.20);
+                                        dmgReducer = false;
                                     }
 
                                     if (playerHealth <= 0)
                                     {
-                                        Console.WriteLine($"Sorry but you are out of HP." +
-                                            $"{Environment.NewLine} You lost that.. :(");
-                                        isAlive = false;
+                                        if (reviveCard == true)
+                                        {
+                                            isAlive = true;
+                                            Console.WriteLine("You died.. " +
+                                                "BUT you have an revive card!");
+
+                                            reviveCard = false;
+                                            playerHealth = 100;
+                                        }
+                                        else if (reviveCard == false)
+                                        {
+                                            Console.WriteLine($"Sorry but you are out of HP." +
+                                                $"{Environment.NewLine} " +
+                                                $"You lost that.. :(");
+                                            isAlive = false;
+
+                                        }
                                         break;
                                     }
                                 }
-
-
-                                if (dmgReducer == true)
-                                {
-                                    playerHealth = playerHealth + (playerHealth * 0.20);
-                                }
-                                dmgReducer = false;
                             }
-
-
                             else if (operationType == 1) // running away
                             {
                                 int dmgOrNot = new Random().Next(1, 2);
@@ -205,14 +286,14 @@ namespace rpg
                             }
                         }
                         break;
-                    case 6:
+                    case 6: // ROOM THAT HAVE A CHEST WITH COINS
                         int chestWithCoins = new Random().Next(50, 150);
                         playerCoins += chestWithCoins;
                         Console.WriteLine($"You have found a chest with {chestWithCoins} coins," +
                             $"now you have {playerCoins}!");
                         Thread.Sleep(2000);
                         break;
-                    case 7:
+                    case 7: // ROOM WITH HEALTH POTION
                         int typePotion = new Random().Next(1, 3);
                         if (typePotion == 1)
                         {
@@ -234,7 +315,7 @@ namespace rpg
                         }
                         Thread.Sleep(2000);
                         break;
-                    case 8:
+                    case 8: // TRAP ROOMS
                         int trapType = new Random().Next(1, 5);
                         Console.WriteLine("You got an trap...");
                         if (trapType == 1)
@@ -281,7 +362,8 @@ namespace rpg
                         }
                         else if (trapType == 4)
                         {
-                            string[] bricksCounting = {
+                            string[] bricksCounting =
+                                {
                                 "first",
                                 "second",
                                 "third",
@@ -291,13 +373,15 @@ namespace rpg
                                 "seventh",
                                 "eighth",
                                 "ninth",
-                                "tenth" };
+                                "tenth"
+                                };
 
                             Console.WriteLine($"Damn.. you have lava and bricks.." +
-                                $"{Environment.NewLine}can you pass through this lava?");
+                                $"{Environment.NewLine}" +
+                                $"can you pass through this lava?");
+
                             int bricks = 10;
                             int counter = 0;
-
                             while (counter < bricks)
                             {
                                 int passOrNot = new Random().Next(1, 2);
@@ -314,7 +398,7 @@ namespace rpg
                                 }
                                 else if (passOrNot == 2)
                                 {
-                                    Console.WriteLine("OUCH THAT HURST :@");
+                                    Console.WriteLine("OUCH THAT HURTS :@");
                                     playerHealth -= 2;
                                 }
                                 counter++;
@@ -325,11 +409,18 @@ namespace rpg
                             Console.WriteLine("Someone is throwing a Potions with poison to you...");
                             playerHealth -= 5;
                         }
+
+                        if (playerHealth <= 0)
+                        {
+                            Console.WriteLine("You died...");
+                            isAlive = false;
+                        }
                         Thread.Sleep(2000);
                         break;
-                    case 9:
+                    case 9: // AN CHEST WITH ITEM
                         Console.WriteLine("You found an chest with item!");
-                        int chestType = new Random().Next(1, 5);
+
+                        int chestType = new Random().Next(1, 6);
                         if (chestType == 1)
                         {
                             Console.WriteLine(":O You've found an Obsidian Sword!!!");
@@ -356,33 +447,63 @@ namespace rpg
                             {
                                 case 1:
                                     playerCoins += 2;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "2 coins!");
                                     break;
                                 case 2:
                                     playerCoins += 4;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "4 coins!");
                                     break;
                                 case 3:
                                     playerCoins += 6;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "6 coins!");
                                     break;
                                 case 4:
                                     playerCoins += 8;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "8 coins!");
                                     break;
                                 case 5:
                                     playerCoins += 10;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "10 coins!");
                                     break;
                                 case 6:
                                     playerCoins += 12;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "12 coins!");
                                     break;
                                 case 7:
                                     playerCoins += 14;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "14 coins!");
                                     break;
                                 case 8:
                                     playerCoins += 16;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "16 coins!");
                                     break;
                                 case 9:
                                     playerCoins += 18;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "18 coins!");
                                     break;
                                 case 10:
                                     playerCoins += 20;
+                                    Console.WriteLine(
+                                        "You got an " +
+                                        "20 coins!");
                                     break;
                             }
                         }
@@ -392,14 +513,57 @@ namespace rpg
                                 $"{Environment.NewLine}You can use it only in fight with monster!");
                             dmgReducer = true;
                         }
+                        else if (chestType == 6)
+                        {
+                            Console.WriteLine($"You've found a REVIVE CARD!!!" +
+                                $"{Environment.NewLine}" +
+                                $"It will revive you automatically when you die!!!");
+                            reviveCard = true;
+                        }
                         Thread.Sleep(2000);
                         break;
                     case 10:
-                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
-                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
-                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
-                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
-                        // TODO  ADD SHOP AND ITEMS TO BUY !!!!
+                        string[] obsidianArmors = { "Obsidian helmet", "Obsidian chestplate",
+                                                    "Obsidian pants", "Obsidian boots" };
+
+                        string[] ironArmors ={"Iron helmet","Iron chestplate",
+                                              "Iron pants","Iron boots" };
+
+                        string[] bronzeArmors = { "Bronze helmet", "Bronze chestplate",
+                                                  "Bronze pants", "Bronze boots", };
+
+                        string[] swords = {"Wood sword","Rock sword","Iron sword",
+                                           "Bronze sword","Diamond sword","Obsidian sword" };
+
+                        Console.WriteLine("     WELCOME TO THE SHOP ROOM!");
+                        Console.WriteLine($"     We have a couple of items." +
+                            $"{Environment.NewLine}            Lets see!");
+                        Thread.Sleep(3000);
+
+                        Console.WriteLine("╔════════════════════════════════╗");
+                        Console.WriteLine("║       #=# SHOP MENU #=#        ║");
+                        Console.WriteLine("║════════════════════════════════║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║════════════════════════════════║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║════════════════════════════════║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║════════════════════════════════║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║════════════════════════════════║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("║                                ║");
+                        Console.WriteLine("╚════════════════════════════════╝");
+
                         break;
                 }
             }
@@ -410,9 +574,10 @@ namespace rpg
                 Console.Write($"{gameOver[i]}");
                 Thread.Sleep(200);
             }
+            
             Console.Clear();
             Console.WriteLine("GAME OVER!");
-            Console.WriteLine($"Health Diff: {playerHealth}");
+            Console.WriteLine($"Health Diff: {Math.Abs(playerHealth)}");
             Console.WriteLine($"Total attack damage: {playerAttack}");
             Console.WriteLine($"Total coins earned: {playerCoins}");
             // TODO  add more statistics!!! - total wins
