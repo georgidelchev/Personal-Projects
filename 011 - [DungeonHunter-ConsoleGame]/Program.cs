@@ -35,21 +35,42 @@ namespace rpg
             //
             // Console.WriteLine($"Lets talk 'bout myself sir! " +
             //     $"{Environment.NewLine}...and your mission of course! ");
-            // Console.WriteLine("STORY: ");
-            //
-            // // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  MAKE GAME WINNABLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  FIX THE TEXTS   !! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //
-            // // TODO ADD ARMORS AND SOME DEFENSIVE ITEMS !!!
-            // // TODO ADD ARMORS AND SOME DEFENSIVE ITEMS !!!
-            //
+
+            // Console.ForegroundColor = ConsoleColor.Green;
+            // Console.WriteLine(">> STORY: ");                                                                                           //  TODO TO FINISH THE STORY!!!!
+            // Console.WriteLine();                                                                                                       //  TODO TO FINISH THE STORY!!!!
+            // Thread.Sleep(4000);                                                                                                        //  TODO TO FINISH THE STORY!!!!
+            // Console.WriteLine($"In a many many years ago , there had an young magician.");                                             //  TODO TO FINISH THE STORY!!!!
+            // Thread.Sleep(4000);                                                                                                        //  TODO TO FINISH THE STORY!!!!
+            // Console.WriteLine($"He was one of the greatest tallens of the Arthur's Castle.");                                          //  TODO TO FINISH THE STORY!!!!
+            // Thread.Sleep(4000);                                                                                                        //  TODO TO FINISH THE STORY!!!!
+            // Console.WriteLine("He's name was ... Chuakhua.");                                                                          //  TODO TO FINISH THE STORY!!!!
+            // Thread.Sleep(4000);                                                                                                        //  TODO TO FINISH THE STORY!!!!
+            // Console.WriteLine($"He wanted to become a greatest magician of all the times ,and he searched for ways to become.");       //  TODO TO FINISH THE STORY!!!!
+            // Thread.Sleep(4000);                                                                                                        //  TODO TO FINISH THE STORY!!!!
+            // Console.WriteLine($"When he was Sixteen years old ,");                                                                     //  TODO TO FINISH THE STORY!!!!
+            // Thread.Sleep(4000);                                                                                                        //  TODO TO FINISH THE STORY!!!!
+            // Console.WriteLine($"one evil magician from the mountains came to the castle.");                                            //  TODO TO FINISH THE STORY!!!!
+            // Thread.Sleep(4000);
+
+
+
+
+            // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  MAKE GAME WINNABLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // >>>>>>>>>>>>>>>>>>>>>>>>>>>> TODO  FIX THE TEXTS   !! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            // // TODO ADD DEFENSIVE ITEMS !!!
+
+
+
+
             // Console.WriteLine();
             // Console.Write("Press any key to continue: ");
             // Console.ReadKey();
             // Console.Clear();
 
 
-            Console.ForegroundColor = ConsoleColor.Cyan; // making the text in the console colored in green
+            Console.ForegroundColor = ConsoleColor.Cyan; // making the text in the console colored in cyan
 
             // Player statistics:
             double playerHealth = 115;
@@ -63,11 +84,11 @@ namespace rpg
             double damageTook = 0;
 
             // Current equipment as names:
-            string currentHelmet = string.Empty;
-            string currentChestplate = string.Empty;
-            string currentPants = string.Empty;
-            string currentBoots = string.Empty;
-            string currentSword = string.Empty;
+            string currentHelmet = "NaN";
+            string currentChestplate = "NaN";
+            string currentPants = "NaN";
+            string currentBoots = "NaN";
+            string currentSword = "NaN";
 
 
             // Which monsters are beaten:
@@ -107,8 +128,13 @@ namespace rpg
                     Console.WriteLine("Do you want to shop?");
                     Console.WriteLine("[0] YES");
                     Console.WriteLine("[1] NO");
-                    int shoping = int.Parse(Console.ReadLine());
-                    switch (shoping)
+                    int shopping = int.Parse(Console.ReadLine());
+                    while (shopping < 0 || shopping > 1)
+                    {
+                        Console.WriteLine("Please enter an valid operation!");
+                        shopping = int.Parse(Console.ReadLine());
+                    }
+                    switch (shopping)
                     {
                         case 0:
                             // Console.WriteLine("     WELCOME TO THE SHOP ROOM!");
@@ -119,7 +145,14 @@ namespace rpg
                             Console.WriteLine("[0] to see the swords!");
                             Console.WriteLine("[1] to see the armors!");
                             Console.WriteLine("[2] to EXIT!");
+                            Console.Write(">> ");
                             int shopChoice = int.Parse(Console.ReadLine());
+                            while (shopChoice < 0 || shopChoice > 2)
+                            {
+                                Console.WriteLine("Please enter an valid operation!");
+                                Console.WriteLine(">> ");
+                                shopChoice = int.Parse(Console.ReadLine());
+                            }
                             if (shopChoice == 0)
                             {
                                 Console.WriteLine("What you want to buy?");
@@ -140,10 +173,26 @@ namespace rpg
                                 Console.WriteLine($"║[2] - {swords[2]} - [200G]   ║");
                                 Console.WriteLine($"║      [+20 dmg][+5 deff]        ║");
                                 Console.WriteLine($"╚════════════════════════════════╝");
+                                Console.WriteLine($"   [3] - EXIT | [4] - PREV. PAGE                                ");
 
                                 Console.Write(">> ");
                                 int order = int.Parse(Console.ReadLine());
-                                if (order == 0)
+                                while (order < 0 || order > 4)
+                                {
+                                    Console.WriteLine("Please enter an valid operation!");
+                                    Console.WriteLine(">> ");
+                                    order = int.Parse(Console.ReadLine());
+                                }
+                                if (order == 4)
+                                {
+                                    Console.Clear();
+                                    goto case 0;
+                                }
+                                else if (order == 3)
+                                {
+                                    break;
+                                }
+                                else if (order == 0)
                                 {
                                     if (playerCoins >= 50)
                                     {
@@ -221,11 +270,27 @@ namespace rpg
                                 Console.WriteLine($"║[2] - Obsidian Armor - [550G]   ║");     ///// TO BUILD THIS  !!!!!!!
                                 Console.WriteLine($"║      [+35 deff]                ║");     ///// TO BUILD THIS  !!!!!!!
                                 Console.WriteLine($"╚════════════════════════════════╝");     ///// TO BUILD THIS  !!!!!!!
+                                Console.WriteLine($"   [3] - EXIT | [4] - PREV. PAGE                                ");
 
                                 Console.Write(">> ");
                                 int order = int.Parse(Console.ReadLine());
+                                while (order < 0 || order > 4)
+                                {
+                                    Console.WriteLine("Please enter an valid operation!");
+                                    Console.WriteLine(">> ");
+                                    order = int.Parse(Console.ReadLine());
+                                }
 
-                                if (order == 0)
+                                if (order == 4)
+                                {
+                                    Console.Clear();
+                                    goto case 0;
+                                }
+                                else if (order == 3)
+                                {
+                                    break;
+                                }
+                                else if (order == 0)
                                 {
                                     if (playerCoins >= 150)
                                     {
@@ -290,12 +355,14 @@ namespace rpg
                                 }
                             }
                             break;
+                        case 3:
+                            break;
                     }
                 }
                 Console.WriteLine();
                 Console.WriteLine($"#=# Room: {roomsCount} #=#"); // message which room is it
 
-                int typeOfTheRoom = new Random().Next(1, 11); // picking random room
+                int typeOfTheRoom = new Random().Next(1, 10); // picking random room
 
                 // switching rooms:
                 switch (typeOfTheRoom)
@@ -305,7 +372,7 @@ namespace rpg
                     case 3:  // here you will meet a random monster
                     case 4:  //
                     case 5:  //
-                        int typeOfTheMonster = new Random().Next(1, 6);
+                        int typeOfTheMonster = new Random().Next(1, 5);
                         double monsterAttack = 0;
                         double monsterHealth = 0;
                         string monsterName = string.Empty;
@@ -364,8 +431,9 @@ namespace rpg
                                               $"Boots: [{currentBoots}]");
 
                             Console.WriteLine();
+
                             // operation choose                                            // current stats
-                            Console.WriteLine($"Player LVL: [{playerLevel}]  -  EXP: [{playerExp}/100]                                                            ");
+                            Console.WriteLine($" Player LVL: [{playerLevel}]  -  EXP: [{playerExp}/100]                                                            ");
                             Console.WriteLine($"╔════════════════════════════════╗           ║Current Health: [{playerHealth}]      ");
                             Console.WriteLine($"║  #=# Choose an operation: #=#  ║           ║Current Deffence: [{playerDefence}]   ");
                             Console.WriteLine($"║════════════════════════════════║           ║Current Damage: [{playerAttack}]      ");
@@ -382,14 +450,18 @@ namespace rpg
                             while (operationType < 0 || operationType > 2)
                             {
                                 Console.Clear();
-                                Console.WriteLine("Please enter a valid action:");
-                                Console.WriteLine("╔════════════════════════════════╗");     //
-                                Console.WriteLine("║  #=# Choose an operation: #=#  ║");     //
-                                Console.WriteLine("║════════════════════════════════║");     //   Player
-                                Console.WriteLine("║  [0]-Fight with the monster.   ║");     // Operations:
-                                Console.WriteLine("║  [1]-Run Away from the monster.║");     //
-                                Console.WriteLine("║  [2]-Hide somewhere.           ║");     //
-                                Console.WriteLine("╚════════════════════════════════╝");
+                                Console.WriteLine("                     Please enter an valid operation!");
+                                Console.WriteLine();
+                                // operation choose                                            // current stats
+                                Console.WriteLine($" Player LVL: [{playerLevel}]  -  EXP: [{playerExp}/100]                                                            ");
+                                Console.WriteLine($"╔════════════════════════════════╗           ║Current Health: [{playerHealth}]      ");
+                                Console.WriteLine($"║  #=# Choose an operation: #=#  ║           ║Current Deffence: [{playerDefence}]   ");
+                                Console.WriteLine($"║════════════════════════════════║           ║Current Damage: [{playerAttack}]      ");
+                                Console.WriteLine($"║  [0]-Fight with the monster.   ║           ║Current Coins: [{playerCoins}]        ");
+                                Console.WriteLine($"║  [1]-Run Away from the monster.║           ║Monster Name : [{monsterName}]        ");
+                                Console.WriteLine($"║  [2]-Hide somewhere.           ║           ║Monster HP: [{monsterHealth}]         ");
+                                Console.WriteLine($"╚════════════════════════════════╝           ║Monster Attack: [{monsterAttack}]     ");
+
                                 operationType = int.Parse(Console.ReadLine());
                             }
                             // fighting
@@ -397,8 +469,8 @@ namespace rpg
                             {
                                 while (isAlive && !isWinner)
                                 {
-                                    int criticalStrike = new Random().Next(1, 3);
-                                    if (criticalStrike == 1) // he have critical strike
+                                    int criticalStrike = new Random().Next(1, 4);
+                                    if (criticalStrike == 1 || criticalStrike == 2) // he have critical strike
                                     {
                                         if (playerAttack >= monsterHealth)
                                         {
@@ -434,7 +506,7 @@ namespace rpg
                                             playerDefence = 0;
                                         }
                                     }
-                                    else if (criticalStrike == 2) // he dont have critical strike
+                                    else if (criticalStrike == 3 || criticalStrike == 4) // he dont have critical strike
                                     {
                                         if (playerAttack >= monsterHealth)
                                         {
@@ -491,7 +563,7 @@ namespace rpg
                                             Console.WriteLine();
 
                                             playerLevel++;           //
-                                            
+
                                             playerAttack += 5;       // some stats added to the 
                                             playerHealth += 10;      // player when he level up !
                                             playerExp -= 100;        //
@@ -567,14 +639,14 @@ namespace rpg
                             }
                             else if (operationType == 1) // running away
                             {
-                                int dmgOrNot = new Random().Next(1, 3);
-                                if (dmgOrNot == 1)
+                                int dmgOrNot = new Random().Next(1, 4);
+                                if (dmgOrNot == 1 || dmgOrNot == 2)
                                 {
                                     Console.WriteLine("You ran away successfully " +
                                         "without taking a damage!");
                                     break;
                                 }
-                                else if (dmgOrNot == 2)
+                                else if (dmgOrNot == 3 || dmgOrNot == 4)
                                 {
                                     playerHealth -= monsterAttack / 2;
                                     double took = monsterAttack / 2;
@@ -585,13 +657,13 @@ namespace rpg
                             }
                             else if (operationType == 2) // hiding
                             {
-                                int hiding = new Random().Next(1, 3);
-                                if (hiding == 1)
+                                int hiding = new Random().Next(1, 4);
+                                if (hiding == 1 || hiding == 2)
                                 {
                                     Console.WriteLine("you hided yourself successfully in the bushes" +
                                         "without taking a damage!");
                                 }
-                                else if (hiding == 2)
+                                else if (hiding == 3 || hiding == 4)
                                 {
                                     playerHealth -= monsterAttack / 2;
                                     double took = monsterAttack / 2;
@@ -603,14 +675,14 @@ namespace rpg
                         }
                         break;
                     case 6: // ROOM THAT HAVE A CHEST WITH COINS
-                        int chestWithCoins = new Random().Next(50, 151);
+                        int chestWithCoins = new Random().Next(50, 150);
                         playerCoins += chestWithCoins;
                         Console.WriteLine($"You have found a chest with {chestWithCoins} coins," +
                             $"now you have {playerCoins}!");
                         Thread.Sleep(2000);
                         break;
                     case 7: // ROOM WITH HEALTH POTION
-                        int typePotion = new Random().Next(1, 4);
+                        int typePotion = new Random().Next(1, 3);
                         if (typePotion == 1)
                         {
                             Console.WriteLine("You have found a small health potion" +
@@ -632,7 +704,7 @@ namespace rpg
                         Thread.Sleep(2000);
                         break;
                     case 8: // TRAP ROOMS
-                        int trapType = new Random().Next(1, 6);
+                        int trapType = new Random().Next(1, 5);
                         Console.WriteLine("You got an trap...");
                         if (trapType == 1)
                         {
@@ -641,7 +713,7 @@ namespace rpg
                         }
                         else if (trapType == 2)
                         {
-                            int slimesCount = new Random().Next(1, 7);
+                            int slimesCount = new Random().Next(1, 10);
                             Console.WriteLine("Arghh... a couple of" +
                                 "slimes has jumped from the roof to your head.");
                             playerHealth -= slimesCount * 2;
@@ -700,8 +772,8 @@ namespace rpg
                             int counter = 0;
                             while (counter < bricks)
                             {
-                                int passOrNot = new Random().Next(1, 3);
-                                if (passOrNot == 1)
+                                int passOrNot = new Random().Next(1, 4);
+                                if (passOrNot == 1 || passOrNot == 2)
                                 {
                                     Console.WriteLine($"You've passed the " +
                                         $"{bricksCounting[counter]} brick. " +
@@ -712,7 +784,7 @@ namespace rpg
                                     Console.SetCursorPosition(0, Console.CursorTop);
 
                                 }
-                                else if (passOrNot == 2)
+                                else if (passOrNot == 3 || passOrNot == 4)
                                 {
                                     Console.WriteLine("Fire..fire..fireee [-5 HP]");
                                     playerHealth -= 5;
@@ -849,14 +921,21 @@ namespace rpg
             }
 
             Console.Clear();
-            Console.WriteLine("GAME OVER!");
+            Console.WriteLine("         GAME OVER!");
+            Console.WriteLine();
             Console.WriteLine($"Health Diff: {Math.Abs(playerHealth)}");
             Console.WriteLine($"Total attack damage: {playerAttack}");
-            Console.WriteLine($"Total coins earned: {playerCoins}");
+            Console.WriteLine($"Coins Left: {playerCoins}");
             Console.WriteLine($"Total Wins: {winsCount}");
             Console.WriteLine($"Total Damage Dealt: {Math.Abs(damageDealt):f2}");
             Console.WriteLine($"Total Damage Took: {Math.Abs(damageTook):f2}");
-            // TODO  add more statistics!!! - purchases when i implemate shop
+            Console.WriteLine();
+            Console.WriteLine($"Your last equipment: ");
+            Console.WriteLine($"Sword: {currentSword}");
+            Console.WriteLine($"Helmet: {currentHelmet}");
+            Console.WriteLine($"Chestplate: {currentChestplate}");
+            Console.WriteLine($"Pants: {currentPants}");
+            Console.WriteLine($"Boots: {currentBoots}");
             // TODO  add more statistics!!! - OTHERS...
 
 
