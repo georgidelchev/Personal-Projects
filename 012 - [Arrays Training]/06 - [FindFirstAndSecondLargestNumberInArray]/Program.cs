@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FindSecondLargestNumberInArray
+namespace FindFirstAndSecondLargestNumberInArray
 {
     class Program
     {
