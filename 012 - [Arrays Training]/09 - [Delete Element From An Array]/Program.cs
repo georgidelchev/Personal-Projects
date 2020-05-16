@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Linq;
 
 namespace DeleteElementFromAnArray
 {
@@ -25,16 +26,11 @@ namespace DeleteElementFromAnArray
             }
             else
             {
-                for (int i = elementToDelete; i < arrSize - 1; i++)
+                arr = arr.Where((source, index) => index != elementToDelete).ToArray();
+                Console.WriteLine();
+                foreach (var item in arr)
                 {
-                    arr[i] = arr[i + 1];
-                }
-                arrSize--;
-
-                Console.WriteLine("Elements of array after delete are");
-                for (int i = 0; i < arrSize; i++)
-                {
-                    Console.Write($"{arr[i]}\t");
+                    Console.WriteLine(item);
                 }
             }
         }
