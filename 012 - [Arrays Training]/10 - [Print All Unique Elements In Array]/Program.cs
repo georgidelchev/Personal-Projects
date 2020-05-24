@@ -8,7 +8,6 @@ namespace PrintAllUniqueElementsInArray
         {
             int arrSize = int.Parse(Console.ReadLine());
             int[] arr = new int[arrSize];
-            int[] arr2 = new int[arrSize];
 
             Console.WriteLine($"Enter {arrSize} elements in the array");
             for (int i = 0; i < arr.Length; i++)
@@ -34,7 +33,6 @@ namespace PrintAllUniqueElementsInArray
                     Console.Write(arr[i] + "\t");
                 }
             }
-
         }
     }
 }
