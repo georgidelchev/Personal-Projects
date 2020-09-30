@@ -11,7 +11,7 @@ public class task2_1 {
         System.out.print("Enter str: ");
         String str = input.nextLine();
 
-        Pattern pattern = Pattern.compile("[z]");
+        Pattern pattern = Pattern.compile("(?i)[z]");
         Matcher matcher = pattern.matcher(str);
 
         System.out.println(CountingChar(matcher));
