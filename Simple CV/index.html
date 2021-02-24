@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CV</title>
+</head>
+
+<body>
+    <header>
+        <h2 class="information-about-me">
+            INFORMATION ABOUT ME
+        </h2>
+    </header>
+
+    <main>
+        <section class="connecting-box">
+            Connecting...
+        </section>
+
+        <section id="info-box">
+            <div id="info-picture">
+                <img src="img/user.png" alt="picture">
+            </div>
+
+            <div id="info-text">
+                <p>
+                    Name: Georgi Delchev
+                </p>
+
+                <p>
+                    Department: 'CST'<br> Course: 'CST'
+                </p>
+
+                <p>
+                    City: Stara Zagora
+                </p>
+
+                <p>
+                    Country: Bulgaria
+                </p>
+            </div>
+        </section>
+
+        <section class="error-box">
+            Error Information
+        </section>
+
+        <section class="login-box">
+            <h2>
+                Log In
+            </h2>
+
+            <form class="form">
+                <div>
+                    <input type="text" name="username" pattern=".{6,}" title="Must contain at least 6 characters." placeholder="username" required>
+                </div>
+
+                <div>
+                    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters." name="password" placeholder="password" required>
+                </div>
+
+                <div>
+                    <input type="submit" name="Submit">
+                </div>
+
+                <div class="animation"></div>
+            </form>
+        </section>
+    </main>
+
+
+    <footer>
+        &copy;CV Georgi Delchev, 2020
+    </footer>
+</body>
+
+</html>

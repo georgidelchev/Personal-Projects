@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.information-about-me {
+    text-align: center;
+    color: darkorange;
+    font-weight: bold;
+    background-color: #333;
+}
+
+body {
+    font-family: sans-serif;
+    color: #000050;
+    height: 100%;
+}
+
+main>section {
+    padding: 20px 5px;
+    background: #6e0877;
+    text-align: center;
+    color: darkorange;
+    font-weight: bold;
+}
+
+img {
+    width: 10%;
+    margin: 0px auto;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.form {
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: darkorange;
+    width: 50%;
+}
+
+input {
+    border: none;
+    box-shadow: none;
+    background: none;
+    outline: none;
+    color: darkorange;
+    padding: 2px;
+    margin: 2px;
+    font: 1.25vmax Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-bottom: 2px solid darkorange;
+}
+
+input:focus {
+    border-color: darkorange;
+}
+
+input[type=submit] {
+    color: darkorange;
+    background-color: #333;
+    padding: 5px 35px;
+    border-bottom: none;
+    border-radius: 50px;
+}
+
+input[type=submit]:hover {
+    color: #333;
+    cursor: pointer;
+    background-color: darkorange;
+    transition: 0.8s;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.error-box {
+    color: rgb(255, 0, 212);
+    background-color: #900e9c;
+}
+
+.connecting-box {
+    color: rgb(255, 0, 212);
+    background-color: #900e9c;
+}
+
+footer {
+    text-align: center;
+    color: darkorange;
+    font-weight: bold;
+    background-color: #333;
+}
+
+@keyframes playX {
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -512px;
+    }
+}
+
+@keyframes playY {
+    from {
+        background-position-y: 0px;
+    }
+    to {
+        background-position-y: -512px;
+    }
+}

@@ -1,0 +1,74 @@
+ /* .animation {
+     width: 512px;
+     height: 512px;
+     background-image: url('images/smurfs.png');
+     position: relative;
+     border: solid 13px darkorange;
+ }
+ 
+ .animation::before {
+     content: "";
+     position: absolute;
+     width: 129px;
+     height: 125px;
+     left: 0px;
+     top: 0px;
+     border: solid 3px darkorange;
+     animation: playV 16s steps(4) infinite, playH 4s steps(4) infinite;
+ } */
+ 
+ @keyframes playV {
+     0% {
+         top: 0px;
+     }
+     100% {
+         top: 512px;
+     }
+ }
+ 
+ @keyframes playH {
+     0% {
+         left: 0px;
+     }
+     100% {
+         left: 512px;
+     }
+ }
+ 
+ #animation {
+     width: 128px;
+     height: 128px;
+     display: inline-block;
+     position: relative;
+     background: url('images/smurfs.png');
+     animation: playX 4s steps(4) infinite, playY 4s steps(4) infinite, moveX 12s infinite;
+ }
+ 
+ @keyframes playX {
+     from {
+         background-position-x: 0px;
+     }
+     to {
+         background-position-x: -512px;
+     }
+ }
+ 
+ @keyframes playY {
+     from {
+         background-position-y: 0px;
+     }
+     to {
+         background-position-y: -512px;
+     }
+ }
+ 
+ @keyframes moveX {
+     50% {
+         transform: translate(400px);
+     }
+ }
+ 
+ body {
+     color: hsl(240, 50%, 30%);
+     background-color: hsl(268, 100%, 85%);
+ }
