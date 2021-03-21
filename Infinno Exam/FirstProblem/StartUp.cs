@@ -1,0 +1,29 @@
+﻿using System;
+
+namespace FirstProblem
+{
+    public class StartUp
+    {
+        public static void Main(string[] args)
+        {
+            for (int i = 1; i <= 100; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    Console.WriteLine("git");
+
+                    continue;
+                }
+
+                if (i % 5 == 0)
+                {
+                    Console.WriteLine("hub");
+
+                    continue;
+                }
+
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
