@@ -1,0 +1,34 @@
+﻿@using IndeavrExam.Common
+@model IndeavrExam.Web.ViewModels.Games.ListAllGamesViewModel
+
+@{
+    this.ViewData["Title"] = "All games";
+}
+
+<div class="text-center">
+    <h1>@this.ViewData["Title"]</h1>
+</div>
+
+<div class="row">
+    @foreach (var game in this.Model.Games)
+    {
+        <div class="card col-md-4">
+            <h5 class="card-title text-center">
+                @game.Title
+            </h5>
+            <img class="card-img-top" src="@game.ImageUrl" width="100" height="300" alt="Card image cap">
+            @*<div class="card-body">
+                    <p class="card-text text-center"><small class="text-muted">@game.ReleaseDateAsString</small></p>
+                </div>*@
+            <a type="button" asp-controller="Games" asp-action="Details" asp-route-id="@game.Id" class="btn btn-info btn-sm">Details</a>
+            <a type="button" asp-controller="Games" asp-action="AddToCart" asp-route-id="@game.Id" class="btn btn-info btn-sm">Add to cart</a>
+            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                <form method="post" asp-controller="Games" asp-action="Delete" id="deleteForm" asp-route-id="@game.Id">
+                </form>
+                <a type="button" onclick="deleteForm.submit()" class="btn btn-danger btn-sm">Delete</a>
+                <a type="button" asp-controller="Games" asp-action="Edit" asp-route-id="@game.Id" class="btn btn-info btn-sm">Edit</a>
+            }
+        </div>
+    }
+</div>
