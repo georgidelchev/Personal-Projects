@@ -1,0 +1,34 @@
+﻿@model CompanyManagementSystem.Web.ViewModels.Users.GiveAssignmentInputModel
+
+@{
+    this.ViewData["Title"] = "Give Assignment";
+
+    var employees = this.Model
+        .Employees
+        .Select(e => new SelectListItem(e.Value, e.Key)).ToList();
+}
+
+<div class="text-center">
+    <h1>@this.ViewData["Title"]</h1>
+</div>
+
+<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <span asp-validation-for="Content" class="text-danger"></span>
+    <div>
+        <textarea asp-for="Content" rows="5" placeholder="Content" class="form-control"></textarea>
+    </div>
+
+    <span asp-validation-for="Employees" class="text-danger"></span>
+    <div>
+        <select name="employeeId" class="form-select" aria-label="Default select example" asp-items="employees">
+            <option selected disabled>Select Employee</option>
+        </select>
+    </div>
+
+    <br />
+    <button type="submit" value="Send" class="btn btn-primary btn-sm">Submit</button>
+    <hr />
+</form>

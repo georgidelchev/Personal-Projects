@@ -1,0 +1,8 @@
+﻿@model IEnumerable<CompanyManagementSystem.Web.ViewModels.Assignments.AllAssignmentsViewModel>
+
+@{var counter=1;}
+@foreach (var assignment in this.Model)
+{
+    <div>@counter. @assignment.Content</div>
+    counter++;
+}

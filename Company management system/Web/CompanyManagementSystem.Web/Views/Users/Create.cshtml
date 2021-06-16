@@ -1,0 +1,56 @@
+﻿@model CompanyManagementSystem.Web.ViewModels.Users.CreateUserInputModel
+
+@{
+    this.ViewData["Title"] = "CreateAsync Employee";
+}
+
+<div class="text-center">
+    <h1>@this.ViewData["Title"]</h1>
+</div>
+
+<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="Email" class="input-group-text">
+                    <i class="fas fa-envelope"></i>
+                </label>
+            </div>
+            <input asp-for="Email" placeholder="Email" class="form-control" />
+        </div>
+    </div> 
+    
+    <div>
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="Password" class="input-group-text">
+                    <i class="fas fa-key"></i>
+                </label>
+            </div>
+            <input asp-for="Password" type="password" placeholder="Password" class="form-control" />
+        </div>
+    </div>
+    
+    <div>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="Salary" class="input-group-text">
+                    <i class="fas fa-money-bill-alt"></i>
+                </label>
+            </div>
+            <input asp-for="Salary" placeholder="Salary" class="form-control" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+    <hr />
+</form>

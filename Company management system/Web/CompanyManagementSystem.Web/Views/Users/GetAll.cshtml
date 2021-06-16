@@ -1,0 +1,42 @@
+﻿@model CompanyManagementSystem.Web.ViewModels.Users.ListAllUsersViewModel
+
+@using CompanyManagementSystem.Common
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <div class="text-center">
+        <h6>Your employees</h6>
+        <a asp-controller="Users" asp-action="Create">Create new</a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Rank</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        @{ int i = 1;}
+        @foreach (var user in this.Model.AllUsers)
+        {
+            <tr>
+                <th scope="row">@i</th>
+                <td>@user.Email</td>
+                <td>@user.Salary$</td>
+                <td>Employee</td>
+                <td><a asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">Fire</a></td>
+                <td><a asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">Edit</a></td>
+            </tr>
+            i++;
+        }
+        </tbody>
+    </table>
+}
