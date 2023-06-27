@@ -1,0 +1,16 @@
+﻿@using EPiServer.Web.Mvc.Html
+
+@model EPiServerDemo.Models.Media.PdfFile
+
+@if (this.Model.RenderPreviewImage)
+{
+<a href="@Url.ContentUrl(Model.ContentLink)">
+    <figure>
+        <img src="~/Static/gfx/pdf.png" style="height:50px; width:50px;" />
+        @*<figcaption>@Model.Name</figcaption>*@
+    </figure>
+</a> }
+else
+{
+@Html.ContentLink(this.Model.ContentLink);
+}

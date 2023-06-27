@@ -1,0 +1,35 @@
+﻿@using EPiServer.Web.Mvc.Html
+
+@model EPiServerDemo.Models.Blocks.ContactBlock
+<style>
+    .contact-us-text {
+        color: blueviolet;
+        font-weight: bolder;
+    }
+</style>
+<div>
+    <div class="contact-us-text">
+        @Html.PropertyFor(m => m.Heading)
+    </div>
+
+    <div>
+        <img src="@Html.PropertyFor(m => m.Image.Path)" width="50" height="50" />
+
+    </div>
+
+    <div>
+        @Html.PropertyFor(m => m.Content)
+    </div>
+
+    <div>
+        @Html.PropertyFor(m => m.PhoneNumber)
+    </div>
+
+    <div>
+        @Html.DisplayFor(m => m.EmailAddress)
+    </div>
+
+    <div>
+        <img src="@Html.PropertyFor(m => m.BottomImage.Path)" width="50" height="50"/>
+    </div>
+</div>

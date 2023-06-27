@@ -1,0 +1,11 @@
+﻿@model EPiServerDemo.Models.ViewModels.PageViewModel<EPiServerDemo.Models.Pages.LibraryPage>
+
+<h1 @Html.EditAttributes(x => x.CurrentPage.Name)>@Model.CurrentPage.Name</h1>
+<div class="row">
+    <div class="span8 clearfix">
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+    </div>
+    <div class="span8 clearfix">
+        @Html.PropertyFor(x => x.CurrentPage.ContentArea, new { CssClass = "row span12" })
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿@using EPiServer.Web.Mvc.Html
+
+@model EPiServerDemo.Models.ViewModels.IPageViewModel<EPiServerDemo.Models.Pages.StartPage>
+
+<h1 @this.Html.EditAttributes(m => m.CurrentPage.Heading)>
+    @(this.Model.CurrentPage.Heading ?? this.Model.CurrentPage.Name)
+</h1>
+<div>
+    @this.Html.PropertyFor(m => m.CurrentPage.MainBody)
+</div>
+
+<div>
+    @Html.PropertyFor(m => m.CurrentPage.MainContentArea,
+        new { CssClass = "row equal-height" })
+</div>

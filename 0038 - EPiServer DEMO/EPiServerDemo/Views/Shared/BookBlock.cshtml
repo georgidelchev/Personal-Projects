@@ -1,0 +1,23 @@
+﻿@using EPiServer.Web.Mvc.Html
+
+@model EPiServerDemo.Models.Blocks.BookBlock
+<div>
+    @this.Html.PropertyFor(m => m.Heading)
+</div>
+<div>
+    @this.Html.PropertyFor(m => m.Description)
+</div>
+
+@foreach (var image in this.Model.Images)
+{
+<div style="display: inline-block;">
+    <a href="@image.GetMappedHref()">
+        <img src="@image.GetMappedHref()" width="100" height="100" />
+    </a>
+</div>}
+<br />
+@foreach (var url in this.Model.Urls)
+{
+<div style="display: inline-block;">
+    <a href="@url.GetMappedHref()">@url.Text</a>
+</div>}

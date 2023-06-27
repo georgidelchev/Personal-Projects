@@ -1,0 +1,38 @@
+﻿@model IEnumerable<HRCloud.Web.ViewModels.Departments.DepartmentViewModel>
+
+@using HRCloud.Common
+
+@{
+    this.ViewData["Title"] = "Home Page";
+}
+
+@if (this.TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Hey!</strong> @this.TempData["Error"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
+    @foreach (var department in this.Model)
+    {
+        <div class="card text-center">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@department.Name</h5>
+                <p class="card-text">@department.Description</p>
+                @{var employeesText = department.EmployeesCount.ToString() + " " + (department.EmployeesCount > 1 ? "employees" : "employee");}
+                <a asp-controller="Employees" asp-action="All" asp-area="" asp-route-departmentName="@department.Name" class="btn btn-primary">@employeesText</a>
+            </div>
+            <div class="card-footer text-muted">
+                Created: @department.CreatedOnAsString
+            </div>
+        </div>
+        <br />
+    }
+</div>

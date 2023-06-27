@@ -1,0 +1,29 @@
+﻿@using HRCloud.Common
+
+@model HRCloud.Web.ViewModels.Employees.EmployeeDetailsViewModel
+
+<div class="d-flex justify-content-center">
+    <div class="card text-center" style="width: 58rem;">
+        <div>
+            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                <a class="text-danger" asp-controller="Employees" asp-action="Delete" asp-route-id="@this.Model.Id"><i class="fas fa-times-circle"></i></a>
+                <a class="text-primary" asp-controller="Employees" asp-action="Edit" asp-route-id="@this.Model.Id"><i class="fas fa-edit"></i></a>
+            }
+        </div>
+        <img class="card-img-top" src="@this.Model.ImageUrl" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text text-center"><strong>Full Name:</strong> @this.Model.FullName</p>
+            <p class="card-text text-center"><strong>Email:</strong> @this.Model.Email</p>
+            <p class="card-text text-center"><strong>Phone:</strong> @this.Model.PhoneNumber</p>
+            <p class="card-text text-center"><strong>Position:</strong> @this.Model.JobName</p>
+            <p class="card-text text-center"><strong>Salary:</strong> $@this.Model.Salary</p>
+            <p class="card-text text-center"><strong>Hired On:</strong> @this.Model.HireDateAsString</p>
+            <p class="card-text text-center"><strong>Department:</strong> @this.Model.DepartmentName</p>
+            @if (!string.IsNullOrEmpty(this.Model.MentorId))
+            {
+                <a asp-controller="Employees" asp-action="Details" asp-route-id="@this.Model.MentorId">mentor</a>
+            }
+        </div>
+    </div>
+</div>

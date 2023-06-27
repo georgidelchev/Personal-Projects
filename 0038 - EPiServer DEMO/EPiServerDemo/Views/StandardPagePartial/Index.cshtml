@@ -1,0 +1,18 @@
+﻿@model EPiServerDemo.Models.ViewModels.PageViewModel<EPiServerDemo.Models.Pages.StandardPage>
+
+<div class="block span4">
+    <div class="border">
+        <a href="@Url.ContentUrl(Model.CurrentPage.ContentLink)">
+            <h2 @Html.EditAttributes(x => x.CurrentPage.Name)>
+                @Model.CurrentPage.Name
+            </h2>
+            <p class="introduction"
+               @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>
+                @Model.CurrentPage.MetaDescription
+            </p>
+            <div @Html.EditAttributes(x => x.CurrentPage.PageImage)>
+                <img src="@Url.ContentUrl(Model.CurrentPage.PageImage)" />
+            </div>
+        </a>
+    </div>
+</div>

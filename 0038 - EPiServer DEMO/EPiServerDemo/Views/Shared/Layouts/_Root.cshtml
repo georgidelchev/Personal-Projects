@@ -1,0 +1,48 @@
+﻿@using EPiServerDemo.Business.ExtensionMethods
+@using EPiServerDemo.Models.ViewModels
+
+@model IPageViewModel<EPiServerDemo.Models.Pages.SitePageData>
+
+<html lang="@Model.CurrentPage.Language">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(Model.CurrentPage.MetaTitle ?? Model.CurrentPage.Name)</title>
+    <meta name="keywords" content="@Model.CurrentPage.MetaKeywords" />
+    <meta name="description" content="@Model.CurrentPage.MetaDescription" />
+    @Html.CanonicalLink()
+    @Html.AlternateLinks()
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/bootstrap-responsive.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/media.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/editmode.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Static/js/jquery.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Static/js/bootstrap.js")"></script>
+    </head>
+<body>
+    @Html.RenderEPiServerQuickNavigator()
+    <div class="container">
+        <div class="row">
+            <div id="header">
+                <div class="span2">
+                    <img src="/Static/gfx/logotype.png" />
+                </div>
+                <div class="span10">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="/en/logout">Log out</a>
+                    }
+                    else
+                    {
+                        <a href="@FormsAuthentication.LoginUrl?ReturnUrl=@Model.CurrentPage.PageLink.ExternalURLFromReference()">Log in</a>
+                    }
+                </div>
+            </div>
+        </div>
+        <hr />
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+footer{
+    background-color:  #213e5a;
+    display: block;
+}
+
+.social-icons{
+    text-align: center;
+    font-size: 40px;
+}
+
+.facebook-icon,
+.linkedin-icon,
+.google-icon,
+.twitter-icon,
+.youtube-icon,
+.github-icon{
+    color: darkorange;
+}
+
+.twitter-icon:hover,
+.facebook-icon:hover{
+    color: white;
+    transition: .6s;
+    text-decoration: none;
+}
+
+.github-icon:hover{
+    color: #333;
+    transition: .6s;
+    text-decoration: none;
+}
+
+.youtube-icon:hover{
+    color: rgb(175, 40, 40);
+    transition: .6s;
+    text-decoration: none;
+}
+
+.google-icon:hover{
+    color: rgb(238, 90, 90);
+    transition: .6s;
+    text-decoration: none;
+}
+
+.linkedin-icon:hover{
+    color:lightblue;
+    transition: .6s;
+    text-decoration: none;
+}
+
+.copyright,
+.name{
+    text-align: center;
+    color: darkorange;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.copyright:hover,
+.name:hover{
+    text-decoration: none;
+    color:white;
+    transition: .6s;
+}

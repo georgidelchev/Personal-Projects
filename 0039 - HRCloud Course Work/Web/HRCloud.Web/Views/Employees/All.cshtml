@@ -1,0 +1,30 @@
+﻿@model HRCloud.Web.ViewModels.Employees.ListEmployeesViewModel
+
+
+@if (this.TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Hey!</strong> @this.TempData["Error"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="text-center">
+    <a asp-controller="Employees" asp-action="Create" asp-route-departmentSource="@this.Model.DepartmentName" asp-area="" class="text-success"><i class="fas fa-plus"></i></a>
+</div>
+
+<div class="row">
+    @foreach (var employee in this.Model.Employees)
+    {
+        <div class="card text-center" style="width: 18rem;">
+            <img class="card-img-top" src="@employee.ImageUrl" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text text-center">Full Name: @employee.FullName</p>
+                <p class="card-text text-center">Email: @employee.Email</p>
+                <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id">Details</a>
+            </div>
+        </div>
+    }
+</div>

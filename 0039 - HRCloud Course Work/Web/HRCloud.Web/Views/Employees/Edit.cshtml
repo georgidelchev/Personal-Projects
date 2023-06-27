@@ -1,0 +1,76 @@
+﻿@model HRCloud.Web.ViewModels.Employees.EditEmployeeInputModel
+
+
+<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="FirstName" class="input-group-text">
+                    <i class="fas fa-file-signature"></i>
+                </label>
+            </div>
+            <input asp-for="FirstName" placeholder="First name" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="SurName" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="SurName" class="input-group-text">
+                    <i class="fas fa-file-signature"></i>
+                </label>
+            </div>
+            <input asp-for="SurName" placeholder="Sur name" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="LastName" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="LastName" class="input-group-text">
+                    <i class="fas fa-file-signature"></i>
+                </label>
+            </div>
+            <input asp-for="LastName" placeholder="Last name" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="PhoneNumber" class="input-group-text">
+                    <i class="fas fa-phone"></i>
+                </label>
+            </div>
+            <input asp-for="PhoneNumber" placeholder="Phone number" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label asp-for="Salary" class="input-group-text">
+                    &nbsp;<i class="fas fa-dollar-sign"></i>&nbsp;
+                </label>
+            </div>
+            <input asp-for="Salary" type="number" placeholder="Salary" class="form-control" />
+        </div>
+    </div>
+
+    <input asp-for="JobId" type="number" readonly="readonly" hidden placeholder="Salary" class="form-control" />
+
+    <button type="submit" class="btn btn-primary btn-sm ">Submit</button>
+</form>
