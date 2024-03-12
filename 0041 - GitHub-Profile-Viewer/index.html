@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <h1 style="text-align: center;">
+            Github User Search
+        </h1>
+
+        <form id="myForm" autocomplete="on" class="container text-center">
+            <div class="form-group col-md-16">
+                <input type="text" class="form-control" id="search" placeholder="Search GitHub User">
+            </div>
+            <div class="form-group col-md-12">
+                <button class="btn btn-danger">Search</button>
+            </div>
+        </form>
+
+        <div id="image"></div>
+        <br>
+        <div id="github" class="col-md-12 text-center"></div>
+        <br>
+        <br>
+        <table id="table" class="table table-striped table-sm table-hover"></table>
+
+        <table id="repos" class="table table-striped table-sm table-hover"></table>
+
+        <div id="hideButton"></div>
+        <br>
+
+        <div id="followersList">
+            <table id="followersTable" class="table table-striped table-sm table-hover"></table>
+        </div>
+    </div>
+</body>
+<script src="javascript.js"></script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("followersList");
+
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pagination.js.org/dist/2.1.5/pagination.js">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <br><br><br>
+
+    <h1 style="text-align: center;">Chuck Norris Jokes API</h1>
+
+    <br><br><br>
+    <form id="inputForm" autocomplete="on" class="container text-center">
+        <div class="form-group col-md-16">
+            <input min="3" type="text" class="form-control" id="search" placeholder="Search by keywords">
+        </div>
+        <div class="form-group col-md-12">
+            <button class="btn btn-danger">Search</button>
+
+        </div>
+    </form>
+    <div class="col text-center">
+        <button onclick="randomJoke()" class="btn btn-danger">Random</button>
+    </div>
+
+
+    <div id="founded"></div>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div id="currentQuote" class="col-lg-6 mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="next"></div>
+</body>
+<script src="script.js"></script>
+
+</html>
