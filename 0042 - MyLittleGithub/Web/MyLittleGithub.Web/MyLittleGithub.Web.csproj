@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>aspnet-MyLittleGithub-BBB373B5-EF3F-4DBB-B8AA-7152CEC275BF</UserSecretsId>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\stylecop.json" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<InternalsVisibleTo Include="MyLittleGithub.Web.Tests" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.161" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLittleGithub.Common\MyLittleGithub.Common.csproj" />
+    <ProjectReference Include="..\..\Data\MyLittleGithub.Data.Models\MyLittleGithub.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\MyLittleGithub.Data\MyLittleGithub.Data.csproj" />
+    <ProjectReference Include="..\..\Services\MyLittleGithub.Services.Data\MyLittleGithub.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\MyLittleGithub.Services.Mapping\MyLittleGithub.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\MyLittleGithub.Services.Messaging\MyLittleGithub.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\MyLittleGithub.Services\MyLittleGithub.Services.csproj" />
+    <ProjectReference Include="..\MyLittleGithub.Web.ViewModels\MyLittleGithub.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\Extensions\" />
+    <Folder Include="wwwroot\projects\39356df9-cda4-435f-908f-a887873126ee\src\ASD\" />
+  </ItemGroup>
+</Project>

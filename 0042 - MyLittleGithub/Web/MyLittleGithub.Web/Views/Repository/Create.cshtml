@@ -1,0 +1,69 @@
+﻿@model MyLittleGithub.Web.ViewModels.InputModels.Repository.CreateRepositoryInputModel
+
+@{
+    this.ViewData["Title"] = "Create Repository";
+
+    var licenses = this.Model
+        .Licenses
+        .Select(l => new SelectListItem(l.Value, l.Key))
+        .ToList();
+}
+
+<h1 class="text-center">Create Repository</h1>
+
+<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
+    <hr />
+    <div>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="input-group mb-3">
+            <label asp-for="Name" class="input-group-text">
+                <i class="fa-solid fa-heading"></i>
+            </label>
+            <input asp-for="Name" placeholder="Name" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="Description" class="text-danger"></span>
+        <div class="input-group mb-3">
+            <label asp-for="Description" class="input-group-text">
+                <i class="fa-solid fa-info"></i>
+            </label>
+            <input asp-for="Description" placeholder="Description" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="ReadMe" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <textarea asp-for="ReadMe" rows="4" placeholder="Read Me" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="LicenseId" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <label asp-for="LicenseId" class="input-group-text">
+                <i class="fa-solid fa-id-card"></i>
+            </label>
+            <select asp-for="LicenseId" class="form-control" asp-items="licenses">
+                <option selected disabled>Choose License</option>
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="IsPrivate" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <div class="form-check">
+                <input asp-for="IsPrivate" class="form-check-input" type="checkbox">
+                <label asp-for="IsPrivate" class="form-check-label"></label>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <button type="submit" class="btn btn-primary btn-sm">Create Repository</button>
+</form>

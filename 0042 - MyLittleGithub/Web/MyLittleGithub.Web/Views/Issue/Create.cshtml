@@ -1,0 +1,31 @@
+﻿@model MyLittleGithub.Web.ViewModels.InputModels.Issue.CreateIssueInputModel
+
+@{
+    this.ViewData["Title"] = "Create Issue";
+}
+
+<h1 class="text-center">Create Issue</h1>
+
+<form method="post" class="col-md-6 offset-md-3 text-center" enctype="multipart/form-data">
+    <hr />
+    <div>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="input-group mb-3">
+            <label asp-for="Name" class="input-group-text">
+                <i class="fa-solid fa-heading"></i>
+            </label>
+            <input asp-for="Name" placeholder="Name" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <textarea asp-for="Description" rows="4" placeholder="Description" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <hr />
+    <button type="submit" class="btn btn-primary btn-sm">Create Issue</button>
+</form>

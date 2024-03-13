@@ -1,0 +1,100 @@
+﻿@model MyLittleGithub.Web.ViewModels.Repository.RepositoryDetailsViewModel
+
+@{
+    this.ViewData["Title"] = "Repository Details";
+}
+
+<div class="d-flex align-items-center">
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            <h5 class="mb-0">@this.Model.Name repository files explorer</h5>
+            <button type="submit" asp-controller="Repository" asp-action="Star" asp-route-repositoryId="@this.Model.Id" class="btn btn-link text-decoration-none text-primary"> @this.Model.RepositoryStars.Count <i class="fa-solid fa-star"></i></button>
+        </form>
+    </div>
+    <div class="ms-auto">
+        <a asp-controller="Issue" asp-action="Create" asp-route-repositoryId="@this.Model.Id" class="btn btn-primary">Create issue</a>
+        @if (this.Model.IsCurrentUserOwner)
+        {
+            <a asp-controller="Repository" asp-action="Edit" asp-route-repositoryId="@this.Model.Id" class="btn btn-primary">Edit</a>
+        }
+        <a asp-controller="Commit" asp-action="Create" asp-route-repositoryId="@this.Model.Id" class="btn btn-primary">Commit</a>
+        <small class="text-muted">@this.Model.LicenseName</small><br />
+    </div>
+</div>
+<div class="table-responsive mt-3">
+    <table class="table table-striped table-hover table-sm mb-0">
+        <thead>
+            <tr>
+                <th>Name <i class="bx bx-up-arrow-alt ms-2"></i></th>
+                <th>Size</th>
+                <th>Last Modified</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var folder in this.Model.Folders)
+            {
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <i class="bx bxs-file-pdf me-2 font-24 text-danger"></i>
+                            </div>
+                            <div class="font-weight-bold text-danger"><i class="fa-solid fa-folder"></i> <a asp-controller="Repository" asp-action="Details" asp-action-id="@this.Model.Id" asp-route-path="@folder.Path">@folder.Name</a></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="font-weight-bold text-danger">@folder.Size KB</div>
+                    </td>
+                    <td>
+                        <div class="font-weight-bold text-danger">@folder.LastModifiedAsString</div>
+                    </td>
+                </tr>
+            }
+
+            @foreach (var file in this.Model.Files)
+            {
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <i class="bx bxs-file-pdf me-2 font-24 text-danger"></i>
+                            </div>
+                            <div class="font-weight-bold text-danger"><i class="fa-solid fa-file text-primary"></i> <a href="@Url.Content(file.Path)" target="_blank" download>@file.Name</a></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="font-weight-bold text-danger">@file.Size KB</div>
+                    </td>
+                    <td>
+                        <div class="font-weight-bold text-danger">@file.LastModifiedAsString</div>
+                    </td>
+                </tr>
+            }
+    </table>
+</div>
+
+<div class="card text-center">
+    <h5 class="card-title">@this.Html.Raw(this.Model.ReadMe)</h5>
+    <div class="card-footer text-muted">
+        <small class="text-muted">@this.Model.CreatedOnAsString</small><br />
+        <small class="text-muted">Last Modified - @this.Model.ModifiedOnAsString</small>
+    </div>
+</div>
+
+<h3 class="text-center mt-5 mb-5">Issues: @this.Model.Issues.Count</h3>
+
+@foreach (var issue in this.Model.Issues)
+{
+    <div class="card mb-3">
+        <h5 class="card-header">@issue.Name</h5>
+        <div class="card-body">
+            <p class="card-text">@this.Html.Raw(issue.Description)</p>
+            @if (this.Model.IsCurrentUserOwner)
+            {
+                <form method="post" enctype="multipart/form-data">
+                    <button type="submit" asp-controller="Issue" asp-action="Resolve" asp-route-issueId="@issue.Id" asp-route-repositoryId="@this.Model.Id" class="btn btn-primary">Resolve the Issue</button>
+                </form>
+            }
+        </div>
+    </div>
+}

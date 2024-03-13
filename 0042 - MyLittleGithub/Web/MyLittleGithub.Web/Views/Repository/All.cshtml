@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model MyLittleGithub.Web.ViewModels.Repository.ListRepositoriesViewModel
+
+@{
+    this.ViewData["Title"] = "All Repositories";
+}
+
+<h3 class="text-center">Repositories Found: @this.Model.Count</h3>
+
+<form method="get" asp-controller="Repository" asp-action="All">
+    <div class="p-1 bg-light rounded rounded-pill shadow-sm mx-auto mb-3 col-md-6">
+        <div class="input-group">
+            <input name="searchPhrase" value="@this.Model.SearchPhrase" type="search" placeholder="Search by keywords, sentence, description or some text..." class="form-control bg-white">
+            <div class="input-group-append">
+                <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    @foreach (var repository in this.Model.PrivateRepositories)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <a class="text-primary text-decoration-none" asp-controller="Repository" asp-action="Details" asp-route-id="@repository.Id"><h5 class="card-title">[PRIVATE] @repository.Name</h5></a>
+                <p class="card-text">@repository.Description</p>
+                <p class="card-text">
+                    <small class="text-muted">Owner: @repository.ApplicationUserUserName</small><br/>
+                    <small class="text-muted">@repository.CreatedOnAsString</small><br />
+                    <small class="text-muted">Last Modified - @repository.ModifiedOnAsString</small>
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+<partial name="_PagingPartial" model="this.Model"/>
+
+<div class="row">
+    @foreach (var repository in this.Model.Repositories)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <a class="text-primary text-decoration-none" asp-controller="Repository" asp-action="Details" asp-route-id="@repository.Id"><h5 class="card-title">@repository.Name</h5></a>
+                <p class="card-text">@repository.Description</p>
+                <p class="card-text">
+                    <small class="text-muted">Owner: @repository.ApplicationUserUserName</small><br/>
+                    <small class="text-muted">@repository.CreatedOnAsString</small><br />
+                    <small class="text-muted">Last Modified - @repository.ModifiedOnAsString</small>
+                </p>
+            </div>
+        </div>
+    }
+</div>
+
+<partial name="_PagingPartial" model="this.Model"/>
